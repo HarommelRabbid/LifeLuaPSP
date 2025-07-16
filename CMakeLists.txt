@@ -5,6 +5,7 @@ project(LifeLua)
 add_executable(${PROJECT_NAME} 
 src/lifemain.c
 src/lifecolor.c
+src/lifedebug.c
 )
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")

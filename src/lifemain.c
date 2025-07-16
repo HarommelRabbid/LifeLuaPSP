@@ -75,6 +75,7 @@ int main(){
     L = luaL_newstate();
     luaL_openlibs(L);
     luaL_opencolor(L);
+    luaL_opendebugscreen(L);
 
     luaL_lifelua_dofile(L);
 

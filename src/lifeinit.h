@@ -76,9 +76,9 @@ void makeHeadBin(const char *dir);
 void utf2ascii(char* dst, uint16_t* src);
 
 void ascii2utf(uint16_t* dst, char* src);
-
+*/
 Color *lua_tocolor(lua_State *L, int n);
-
+/*
 LUALIB_API int luaL_opentimer(lua_State *L);
 LUALIB_API int luaL_extendio(lua_State *L);
 LUALIB_API int luaL_extendos(lua_State *L);
@@ -86,7 +86,8 @@ LUALIB_API int luaL_opennetwork(lua_State *L);
 LUALIB_API int luaL_opencontrols(lua_State *L);
 LUALIB_API int luaL_opensqlite3(lua_State *L);
 LUALIB_API int luaL_opendraw(lua_State *L);*/
-LUALIB_API int luaL_opencolor(lua_State *L);/*
+LUALIB_API int luaL_opencolor(lua_State *L);
+LUALIB_API int luaL_opendebugscreen(lua_State *L);/*
 LUALIB_API int luaL_openimage(lua_State *L);
 LUALIB_API int luaL_openfont(lua_State *L);
 LUALIB_API int luaL_opencamera(lua_State *L);
