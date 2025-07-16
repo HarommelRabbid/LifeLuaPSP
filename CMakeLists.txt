@@ -6,6 +6,7 @@ add_executable(${PROJECT_NAME}
 src/lifemain.c
 src/lifecolor.c
 src/lifedebug.c
+src/ext/lutf8lib.c
 )
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
