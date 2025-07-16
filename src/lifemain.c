@@ -30,8 +30,8 @@ void *luaL_testudata(lua_State *L, int ud, const char *tname) {
 
 int exit_callback(int arg1, int arg2, void *common) {
     lua_getglobal(L, "LifeLuaExitCallback");
-	if (lua_isfunction(L, -1)) lua_call(L, 0, 0);
-	sceKernelExitGame();
+	if (lua_isfunction(L, -1)) lua_pcall(L, 0, 0, 0);
+	lua_close(L); sceKernelExitGame();
     return 0;
 }
 
