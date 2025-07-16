@@ -6,3 +6,4 @@ LifeLua for the PSP
 # Credits
 * [oslib](https://github.com/dogo/oslib)
 * pspsdk contributors
+* AMGLib
