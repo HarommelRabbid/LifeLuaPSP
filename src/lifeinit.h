@@ -42,12 +42,9 @@ void *luaL_testudata(lua_State *L, int ud, const char *tname);
 /*
 extern char vita_ip[16];
 extern unsigned short int vita_port;
-
+*/
 extern SceCtrlData pad, oldpad;
-extern SceCtrlActuator actuators[4];
-extern SceTouchData fronttouch, reartouch;
-extern SceMotionSensorState motion;
-
+/*
 extern bool unsafe;
 
 extern vita2d_pgf *pgf;
@@ -56,13 +53,11 @@ extern vita2d_pvf *pvf;
 typedef struct {
     unsigned int color;
 } Color;
-/*
-typedef struct {
-	vita2d_pgf *pgf;
-	vita2d_pvf *pvf;
-	vita2d_font *font;
-} Font;
 
+typedef struct {
+	OSL_FONT *font;
+} Font;
+/*
 typedef struct {
     vita2d_texture *tex;
 } Image;
@@ -80,16 +75,16 @@ void ascii2utf(uint16_t* dst, char* src);
 Color *lua_tocolor(lua_State *L, int n);
 /*
 LUALIB_API int luaL_opentimer(lua_State *L);
-LUALIB_API int luaL_extendio(lua_State *L);
-LUALIB_API int luaL_extendos(lua_State *L);
-LUALIB_API int luaL_opennetwork(lua_State *L);
-LUALIB_API int luaL_opencontrols(lua_State *L);
-LUALIB_API int luaL_opensqlite3(lua_State *L);
-LUALIB_API int luaL_opendraw(lua_State *L);*/
+LUALIB_API int luaL_extendio(lua_State *L);*/
+LUALIB_API int luaL_extendos(lua_State *L);/*
+LUALIB_API int luaL_opennetwork(lua_State *L);*/
+LUALIB_API int luaL_opencontrols(lua_State *L);/*
+LUALIB_API int luaL_opensqlite3(lua_State *L);*/
+LUALIB_API int luaL_opendraw(lua_State *L);
 LUALIB_API int luaL_opencolor(lua_State *L);
 LUALIB_API int luaL_opendebugscreen(lua_State *L);/*
-LUALIB_API int luaL_openimage(lua_State *L);
-LUALIB_API int luaL_openfont(lua_State *L);
+LUALIB_API int luaL_openimage(lua_State *L);*/
+LUALIB_API int luaL_openfont(lua_State *L);/*
 LUALIB_API int luaL_opencamera(lua_State *L);
 LUALIB_API int luaL_openthread(lua_State *L);
 //LUALIB_API int luaL_openimgui(lua_State *L);

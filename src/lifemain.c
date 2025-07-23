@@ -4,7 +4,7 @@
 #include "include/asprintf.h"
 
 // PSP_MODULE_INFO(name, attrs, major version, minor version) - just in mind
-PSP_MODULE_INFO("LifeLua PSP", 0, 0, 0);
+PSP_MODULE_INFO("LifeLua PSP", 0, 0, 1);
 PSP_MAIN_THREAD_ATTR(PSP_THREAD_ATTR_USER | PSP_THREAD_ATTR_VFPU);
 
 lua_State *L;
@@ -27,11 +27,12 @@ void *luaL_testudata(lua_State *L, int ud, const char *tname) {
   return NULL;  /* value is not a userdata with a metatable */
 }
 #endif
-
+/*
 int exit_callback(int arg1, int arg2, void *common) {
-    lua_getglobal(L, "LifeLuaExitCallback");
-	if (lua_isfunction(L, -1)) lua_pcall(L, 0, 0, 0);
-	lua_close(L); sceKernelExitGame();
+    //lua_getglobal(L, "LifeLuaExitCallback");
+	  //if (lua_isfunction(L, -1)) lua_call(L, 0, 0);
+    exit_req = true;
+	  sceKernelExitGame();
     return 0;
 }
 
@@ -47,12 +48,13 @@ int setup_callbacks() {
     if(thid >= 0) sceKernelStartThread(thid, 0, 0);
     return thid;
 }
-
+*/
 void luaL_lifelua_dofile(lua_State *L) {
     char *error = NULL;
+    luaL_loadfile(L, "main.lua");
 
     while(true) {
-        if(luaL_dofile(L, "main.lua") == LUA_OK) break; // Success, exit loop
+        if(lua_pcall(L, 0, LUA_MULTRET, 0) == LUA_OK) break; // Success, exit loop
 
         asprintf(&error, "LifeLua has encountered an error:\n%s\n\nDo you want to retry?", lua_tostring(L, -1));
 
@@ -65,23 +67,29 @@ void luaL_lifelua_dofile(lua_State *L) {
 }
 
 int main(){
-    setup_callbacks();
+    //setup_callbacks();
     oslInit(0);
     oslInitGfx(OSL_PF_8888, 1);
-    oslInitAudio();
-    oslSetQuitOnLoadFailure(1);
+    oslSetQuitOnLoadFailure(false);
     oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8);
+    oslNetInit();
 
     L = luaL_newstate();
     luaL_openlibs(L);
+    luaL_extendos(L);
     luaL_opencolor(L);
+    luaL_opencontrols(L);
     luaL_opendebugscreen(L);
+    luaL_openfont(L);
+    luaL_opendraw(L);
     luaL_openutf8(L);
 
     luaL_lifelua_dofile(L);
 
-    oslEndGfx();
     lua_close(L);
+    oslNetTerm();
+    oslEndGfx();
+    oslQuit();
     
     sceKernelExitGame();
     return 0;
