@@ -74,6 +74,9 @@ int main(){
     oslIntraFontInit(INTRAFONT_CACHE_MED | INTRAFONT_STRING_UTF8);
     oslNetInit();
 
+    sceCtrlSetSamplingCycle(0);
+    sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
+
     L = luaL_newstate();
     luaL_openlibs(L);
     luaL_extendos(L);
