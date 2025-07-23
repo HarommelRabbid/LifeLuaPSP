@@ -13,6 +13,24 @@ static int lua_swapbuff(lua_State *L) {
     return 0;
 }
 
+static int lua_text(lua_State *L){
+    int x = luaL_checkinteger(L, 1);
+    int y = luaL_checkinteger(L, 2);
+    const char *text = luaL_checkstring(L, 3);
+    oslDrawString(x, y, text);
+    return 0;
+}
+
+static int lua_textbox(lua_State *L){
+    int x = luaL_checkinteger(L, 1);
+    int y = luaL_checkinteger(L, 2);
+    int w = luaL_checkinteger(L, 3);
+    int h = luaL_checkinteger(L, 4);
+    const char *text = luaL_checkstring(L, 5);
+    oslDrawTextBox(x, y, w, h, text, 0);
+    return 0;
+}
+
 static int lua_rect(lua_State *L) {
     int x = luaL_checkinteger(L, 1);
     int y = luaL_checkinteger(L, 2);
@@ -49,7 +67,8 @@ static int lua_gradient(lua_State *L) {
 }
 
 static const luaL_Reg draw_lib[] = {
-    //{"text", lua_text},
+    {"text", lua_text},
+    {"textbox", lua_textbox},
 	//{"textwidth", lua_textwidth},
 	//{"textheight", lua_textheight},
     {"rect", lua_rect},

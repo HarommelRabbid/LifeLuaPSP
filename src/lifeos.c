@@ -94,12 +94,12 @@ static int lua_nickname(lua_State *L){
 
 static int lua_splash1(lua_State *L){
     oslShowSplashScreen1();
-    return 1;
+    return 0;
 }
 
 static int lua_splash2(lua_State *L){
     oslShowSplashScreen2();
-    return 1;
+    return 0;
 }
 
 static const luaL_Reg os_lib[] = {

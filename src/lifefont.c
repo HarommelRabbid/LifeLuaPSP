@@ -56,40 +56,16 @@ static int lua_fontgc(lua_State *L){
 	return 0;
 }
 
-static int lua_text(lua_State *L){
-    Font *font = (Font *)luaL_checkudata(L, 1, "font");
-    int x = luaL_checkinteger(L, 2);
-    int y = luaL_checkinteger(L, 3);
-    const char *text = luaL_checkstring(L, 4);
-    oslDrawString(x, y, text);
-    return 0;
-}
-
-static int lua_textbox(lua_State *L){
-    Font *font = (Font *)luaL_checkudata(L, 1, "font");
-    int x = luaL_checkinteger(L, 2);
-    int y = luaL_checkinteger(L, 3);
-    int w = luaL_checkinteger(L, 4);
-    int h = luaL_checkinteger(L, 5);
-    const char *text = luaL_checkstring(L, 6);
-    oslDrawTextBox(x, y, w, h, text, 0);
-    return 0;
-}
-
 static const luaL_Reg font_lib[] = {
     {"load", lua_loadfont},
 	{"default", lua_defaultfont},
     {"properties", lua_fontprops},
-    {"text", lua_text},
-    {"textbox", lua_textbox},
     {NULL, NULL}
 };
 
 static const luaL_Reg font_methods[] = {
 	{"default", lua_defaultfont},
     {"properties", lua_fontprops},
-    {"text", lua_text},
-    {"textbox", lua_textbox},
     {NULL, NULL}
 };
 
