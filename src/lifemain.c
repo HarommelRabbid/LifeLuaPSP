@@ -71,7 +71,7 @@ int main(){
     oslInit(0);
     oslInitGfx(OSL_PF_8888, 1);
     oslSetQuitOnLoadFailure(false);
-    oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8);
+    oslIntraFontInit(INTRAFONT_CACHE_MED | INTRAFONT_STRING_UTF8);
     oslNetInit();
 
     L = luaL_newstate();

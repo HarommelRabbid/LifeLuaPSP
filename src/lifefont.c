@@ -78,5 +78,17 @@ LUALIB_API int luaL_openfont(lua_State *L){
     luaL_register(L, NULL, font_methods);
 
 	luaL_register(L, "font", font_lib);
+    luaL_pushglobalint(L, INTRAFONT_ADVANCE_H);
+    luaL_pushglobalint(L, INTRAFONT_ADVANCE_V);
+    luaL_pushglobalint(L, INTRAFONT_ALIGN_LEFT);
+    luaL_pushglobalint(L, INTRAFONT_ALIGN_CENTER);
+    luaL_pushglobalint(L, INTRAFONT_ALIGN_RIGHT);
+    luaL_pushglobalint(L, INTRAFONT_ALIGN_FULL);
+    luaL_pushglobalint(L, INTRAFONT_SCROLL_LEFT);
+    luaL_pushglobalint(L, INTRAFONT_SCROLL_SEESAW);
+    luaL_pushglobalint(L, INTRAFONT_SCROLL_RIGHT);
+    luaL_pushglobalint(L, INTRAFONT_SCROLL_THROUGH);
+    luaL_pushglobalint(L, INTRAFONT_WIDTH_VAR);
+    luaL_pushglobalint(L, INTRAFONT_WIDTH_FIX);
     return 1;
 }

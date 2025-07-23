@@ -57,20 +57,14 @@ typedef struct {
 typedef struct {
 	OSL_FONT *font;
 } Font;
-/*
-typedef struct {
-    vita2d_texture *tex;
-} Image;
 
+typedef struct {
+    OSL_IMAGE *img;
+} Image;
+/*
 int string_ends_with(const char * str, const char * suffix);
 
 int file_exists(const char* path);
-
-void makeHeadBin(const char *dir);
-
-void utf2ascii(char* dst, uint16_t* src);
-
-void ascii2utf(uint16_t* dst, char* src);
 */
 Color *lua_tocolor(lua_State *L, int n);
 /*
