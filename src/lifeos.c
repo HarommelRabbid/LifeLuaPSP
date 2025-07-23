@@ -92,6 +92,16 @@ static int lua_nickname(lua_State *L){
     return 1;
 }
 
+static int lua_splash1(lua_State *L){
+    oslShowSplashScreen1();
+    return 1;
+}
+
+static int lua_splash2(lua_State *L){
+    oslShowSplashScreen2();
+    return 1;
+}
+
 static const luaL_Reg os_lib[] = {
     {"delay", lua_delay},
     {"delaycb", lua_delaycb},
@@ -102,6 +112,8 @@ static const luaL_Reg os_lib[] = {
     {"browser", lua_browser},
     {"language", lua_language},
     {"nickname", lua_nickname},
+    {"splash1", lua_splash1},
+    {"splash2", lua_splash2},
     {NULL, NULL}
 };
 

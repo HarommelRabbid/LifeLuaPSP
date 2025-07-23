@@ -150,17 +150,9 @@ static int lua_coloreq(lua_State *L){
 static int lua_colorblend(lua_State *L) {
     Color *c1 = (Color *)luaL_checkudata(L, 1, "color");
     Color *c2 = (Color *)luaL_checkudata(L, 2, "color");
-    u8 red, green, blue, alpha, red1, green1, blue1, alpha1;
-    oslRgbaGet8888(c1->color, red, green, blue, alpha);
-    oslRgbaGet8888(c2->color, red1, green1, blue1, alpha1);
 
     Color *result = (Color *)lua_newuserdata(L, sizeof(Color));
-    result->color = RGBA(
-        (red + red1) / 2, // R
-        (green + green1) / 2, // G
-        (blue + blue1) / 2, // B
-        (alpha + alpha1) / 2  // A
-    );
+    result->color = oslBlendColors(c1->color, c2->color);
 
     luaL_getmetatable(L, "color");
     lua_setmetatable(L, -2);
